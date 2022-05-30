@@ -1,0 +1,58 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  height: 100vh;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7.5vmin;
+}
+
+#game_board {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  gap: var(--cell-gap);
+  border-radius: 1vmin;
+  padding: var(--cell-gap);
+  background-color: #ccc;
+  position: relative;
+}
+
+.cell {
+  background-color: #aaa;
+  border-radius: var(--cell-gap);
+}
+
+.tile {
+  position: absolute;
+  border-radius: var(--cell-gap);
+  width: 20vmin;
+  height: 20vmin;
+  background-color: aqua;
+  color: #333;
+  font-weight: 600;
+  left: var(--cell-gap);
+  top: var(--cell-gap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: hsl(237, 28%, var(--background-lightness));
+  color: hsl(200, 25%, var(--text-lightness));
+  animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
