@@ -1,16 +1,17 @@
 *,
-*::after,
-*::before {
+*::before,
+*::after {
   box-sizing: border-box;
   font-family: Arial;
 }
 
 body {
-  height: 100vh;
   background-color: #333;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
   font-size: 7.5vmin;
 }
 
@@ -18,33 +19,31 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--grid-size), var(--cell-size));
   grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  background-color: #ccc;
   gap: var(--cell-gap);
   border-radius: 1vmin;
   padding: var(--cell-gap);
-  background-color: #ccc;
   position: relative;
 }
 
 .cell {
   background-color: #aaa;
-  border-radius: var(--cell-gap);
+  border-radius: 1vmin;
 }
 
 .tile {
   position: absolute;
-  border-radius: var(--cell-gap);
-  width: 20vmin;
-  height: 20vmin;
-  background-color: aqua;
-  color: #333;
-  font-weight: 600;
-  left: var(--cell-gap);
-  top: var(--cell-gap);
   display: flex;
-  align-items: center;
   justify-content: center;
-
-  background-color: hsl(237, 28%, var(--background-lightness));
+  align-items: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: red;
+  border-radius: 1vmin;
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  font-weight: bold;
+  background-color: hsl(200, 50%, var(--background-lightness));
   color: hsl(200, 25%, var(--text-lightness));
   animation: show 200ms ease-in-out;
   transition: 100ms ease-in-out;

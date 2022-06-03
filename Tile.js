@@ -3,11 +3,12 @@ export default class Tile {
   #x;
   #y;
   #value;
-  constructor(tileContainer, value = Math.random > 0.5 ? 2 : 4) {
+
+  constructor(tileContainer, value = Math.random() > 0.5 ? 2 : 4) {
     this.#tileElement = document.createElement("div");
     this.#tileElement.classList.add("tile");
     tileContainer.append(this.#tileElement);
-    this.#value = value;
+    this.value = value;
   }
 
   get value() {
@@ -37,5 +38,21 @@ export default class Tile {
   set y(value) {
     this.#y = value;
     this.#tileElement.style.setProperty("--y", value);
+  }
+
+  remove() {
+    this.#tileElement.remove();
+  }
+
+  waitForTransition(animation = false) {
+    return new Promise((resolve) => {
+      this.#tileElement.addEventListener(
+        animation ? "animationend" : "transitionend",
+        resolve,
+        {
+          once: true,
+        }
+      );
+    });
   }
 }
